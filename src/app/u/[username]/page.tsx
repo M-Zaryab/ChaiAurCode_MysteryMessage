@@ -26,7 +26,6 @@ import { useParams } from "next/navigation";
 import { messageSchema } from "@/schemas/messageSchema";
 
 const specialChar = "||";
-export const dynamic = "force-dynamic";
 
 const parseStringMessages = (messageString: string): string[] => {
   return messageString.split(specialChar);
