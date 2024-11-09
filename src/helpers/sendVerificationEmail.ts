@@ -28,12 +28,16 @@ export async function sendVerificationEmail(
       ).replace("{username}", username),
     };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log("Error while sending mail", error);
-      } else {
-        console.log("Email sent: " + info.response);
-      }
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log("Error while sending mail", error);
+          reject(error);
+        } else {
+          console.log("Email sent: " + info.response);
+          resolve(info);
+        }
+      });
     });
   } catch (error) {
     console.log("error", error);
