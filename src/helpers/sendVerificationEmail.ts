@@ -10,6 +10,9 @@ export async function sendVerificationEmail(
     console.log("verifyCode ", verifyCode);
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      tls: {
+        ciphers: "SSLv3",
+      },
       auth: {
         user: "zaryabimran222@gmail.com",
         pass: "crfrkmtahuxjgkne",
